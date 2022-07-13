@@ -3,18 +3,23 @@ from django.utils import timezone
 
 # Create your models here.
 
+
 class Order(models.Model):
     pass
 
+
 class InfinityData(models.Model):
     pass
+
 
 class Item(models.Model):
     item_code_lis = models.CharField(max_length=10, db_column='ItemCodeLis', null=True, blank=True)
     item_code_middleware = models.CharField(max_length=10, db_column='ItemCodeLis', null=True, blank=True)
 
+
 class ItemRange(models.Model):
-    item = models.ForeignKey(Item)
+    item = models.ForeignKey(Item, on_delete=True)
+
 
 class Patient(models.Model):
     name = models.CharField(max_length=10, db_column='Name', null=True, blank=True)
