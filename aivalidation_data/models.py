@@ -5,7 +5,8 @@ from django.utils import timezone
 
 
 class Order(models.Model):
-    pass
+    order_id = models.CharField('申请单id', max_length=30, db_column='order_id')
+
 
 
 class InfinityData(models.Model):
@@ -16,7 +17,7 @@ class Item(models.Model):
     item_code_lis = models.CharField(
         'lis_code',
         max_length=10,
-        db_column='ItemCodeLis',
+        db_column='item_code',
         null=True,
         blank=True
     )
@@ -27,6 +28,9 @@ class Item(models.Model):
         null=True,
         blank=True
     )
+
+    class Meta:
+        ordering = ['-id']
 
 
 class ItemRange(models.Model):
@@ -42,20 +46,17 @@ class Patient(models.Model):
         null=True,
         blank=True
     )
-
     birthday = models.DateField(
         db_column='Birthday',
         null=True,
         blank=True
     )
-
     create_time = models.DateTimeField(
         db_column='CreateTime',
         default=timezone.now,
         null=True,
         blank=True
     )
-
     modified_by = models.IntegerField(
         db_column='ModifiedBy',
         null=True,
