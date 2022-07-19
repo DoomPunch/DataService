@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'DataService.apps.AivalidationDataConfig'
+    'aivalidation_data.apps.AivalidationDataConfig'
 ]
 
 MIDDLEWARE = [
