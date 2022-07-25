@@ -60,15 +60,17 @@ class Item(models.Model):
 
 class ItemRange(models.Model):
     """ 检测项范围
-
     """
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    max_range = models.FloatField()
-    min_range = models.FloatField()
+    min_range = models.FloatField('参考范围下限', db_column='min_range')
+    max_range = models.FloatField('参考范围上限', db_column='max_range')
 
 
 class TestItem(models.Model):
-    item_code = models.CharField
+    item_code = models.CharField('检测项lis代码', max_length=50, db_column='item_code')
+    item_name = models.CharField('检测项名称', max_length=50, db_column='item_name')
+    item_middle_code = models.CharField('检测项middleware代码', max_length=50, db_column='item_middle_code')
+    item_result = models.CharField('检测项结果', max_length=20, db_column='item_result')
 
 
 class Order(models.Model):
